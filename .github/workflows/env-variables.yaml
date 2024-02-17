@@ -1,0 +1,46 @@
+name: Environment Variables
+env:
+  WORKSPACE_ENV_VAR: 'custom workspace env variables'
+on:
+  pull_request:
+    # triggers the workflow on pull request on branch main
+    branches: ["main"]
+  push:
+    branches: [ "main" ]
+jobs:
+  ubuntu:
+    env:
+      JOB_ENV_VAR: 'custom job env variables'
+    runs-on: ubuntu-latest
+    steps:
+      - name: print env variables
+        env:
+          STEP_ENV_VAR: 'custom step env var'
+        run: |
+          echo "accessing evn var in run command"
+          echo "$WORKSPACE_ENV_VAR"
+          echo "$JOB_ENV_VAR"
+          echo "$STEP_ENV_VAR"
+          echo "---------------------------------"
+          echo "accessing evn var in env context"
+          echo "${{ env.WORKSPACE_ENV_VAR }}"
+          echo "${{  env.JOB_ENV_VAR }}"
+          echo "${{  env.STEP_ENV_VAR  }}"
+  windows:
+    env:
+      JOB_ENV_VAR: 'custom job env var'
+    runs-on: windows-latest
+    steps:
+      - name: print env vars
+        env:
+          STEP_ENV_VAR: 'custom step env var'
+        run: |
+          echo "accessing env var in run command"
+          echo "$WORKSPACE_ENV_VAR"
+          echo "$JOB_ENV_VAR"
+          echo "$STEP_ENV_VAR"
+          echo "----------------------------------"
+          echo "accessign env vars in env context"
+          echo "${{ env.WORKSPACE_ENV_VAR }}"
+          echo "${{ env.JOB_ENV_VAR }}"
+          echo "${{ env.STEP_ENV_VAR  }}"

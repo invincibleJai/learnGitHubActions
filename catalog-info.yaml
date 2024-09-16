@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: learnGitHubActions
+  annotations:
+    github.com/project-slug: invincibleJai/learnGitHubActions
+spec:
+  type: other
+  lifecycle: unknown
+  owner: user:default/invinciblejai
